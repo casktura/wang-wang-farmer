@@ -1,0 +1,34 @@
+{
+	"menu": [
+		{
+			"type": "spritesheet",
+			"key": "start-button",
+			"url": "assets/sprites/start-button.png",
+			"frameWidth": 128,
+			"frameHeight": 128,
+			"frameMax": 2,
+			"margin": 0,
+			"spacing": 0
+		},
+		{
+			"type": "spritesheet",
+			"key": "help-button",
+			"url": "assets/sprites/help-button.png",
+			"frameWidth": 128,
+			"frameHeight": 128,
+			"frameMax": 2,
+			"margin": 0,
+			"spacing": 0
+		},
+		{
+			"type": "spritesheet",
+			"key": "credit-button",
+			"url": "assets/sprites/credit-button.png",
+			"frameWidth": 128,
+			"frameHeight": 128,
+			"frameMax": 2,
+			"margin": 0,
+			"spacing": 0
+		}
+	]
+}
