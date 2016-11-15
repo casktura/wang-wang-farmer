@@ -1,4 +1,22 @@
 {
+	"preload": [
+		{
+            "type": "image",
+            "key": "logo-background",
+            "url": "assets/images/logo-background.png",
+            "overwrite": false
+		},
+		{
+			"type": "spritesheet",
+			"key": "loading-text",
+			"url": "assets/sprites/loading-text.png",
+			"frameWidth": 750,
+			"frameHeight": 184,
+			"frameMax": 3,
+			"margin": 0,
+			"spacing": 0
+		}
+	],
 	"menu": [
 		{
 			"type": "spritesheet",
@@ -29,6 +47,22 @@
 			"frameMax": 2,
 			"margin": 0,
 			"spacing": 0
+		}
+	],
+	"prologue": [
+		{
+            "type": "image",
+            "key": "prologue",
+            "url": "assets/images/prologue.png",
+            "overwrite": false
+		}
+	],
+	"game": [
+		{
+            "type": "image",
+            "key": "play-stage-demo",
+            "url": "assets/images/play-stage-demo.png",
+            "overwrite": false
 		}
 	]
 }

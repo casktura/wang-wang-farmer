@@ -2,8 +2,8 @@ WWFarmer.Game = function (game) {};
 
 WWFarmer.Game.prototype = {
 	create: function () {
-		this.add.text(0, 0, "This is Game Page", {fill: "white"});
-		this.add.text(0, 50, "Tab to go to game over", {fill: "white"});
+		this.playStageDemo = this.add.sprite(0, 0, "play-stage-demo");
+
 		this.input.onTap.add(this.toGameOver, this);
 	},
 	toGameOver: function () {
