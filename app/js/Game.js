@@ -74,13 +74,7 @@ var plantTypes = [
 	"pineapple"
 ];
 
-var inventory = {
-	tunip: 0,
-	potato: 0,
-	corn: 0,
-	tomato: 0,
-	pineapple: 0
-};
+var inventory;
 
 var selectedMenu = "";
 var selectedSeed = "";
@@ -148,14 +142,23 @@ Garden.prototype = {
 	}
 };
 
-WWFarmer.Game = function (game) {
-	this.money = 50;
-	this.days = 1;
-
-	this.gardens = [];
-};
+WWFarmer.Game = function (game) {};
 
 WWFarmer.Game.prototype = {
+	init: function () {
+		this.money = 50;
+		this.days = 1;
+
+		inventory = {
+			tunip: 0,
+			potato: 0,
+			corn: 0,
+			tomato: 0,
+			pineapple: 0
+		};
+
+		this.gardens = [];
+	},
 	create: function () {
 		this.playStageDemo = this.add.sprite(0, 0, "garden-background");
 		this.createMenu();
@@ -169,6 +172,8 @@ WWFarmer.Game.prototype = {
 		this.coin.scale.set(0.3);
 		this.coin.anchor.set(0.5);
 		this.coin.alpha = 0;
+
+		console.log(this.gardens);
 	},
 	toGameOver: function () {
 		this.state.start("GameOver");
