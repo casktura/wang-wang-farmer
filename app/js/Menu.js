@@ -21,6 +21,13 @@ WWFarmer.Menu.prototype = {
 		this.creditButton.scale.set(2.25);
 		this.creditButton.alpha = 0;
 		this.add.tween(this.creditButton).to({alpha: 1}, 500, "Linear", true);
+
+		this.toggleBgSoundButton = this.add.sprite(700, 20, "toggle-music-button", 0);
+		this.toggleBgSoundButton.anchor.set(1, 0);
+		this.toggleBgSoundButton.inputEnabled = true;
+		this.toggleBgSoundButton.alpha = 0;
+		this.toggleBgSoundButton.events.onInputDown.add(this.toggleBgSound, this);
+		this.add.tween(this.toggleBgSoundButton).to({alpha: 1}, 500, "Linear", true);
 	},
 	toPrologue: function () {
 		this.state.start("Prologue");
@@ -30,5 +37,16 @@ WWFarmer.Menu.prototype = {
 	},
 	toCredit: function () {
 		this.state.start("Credit");
+	},
+	toggleBgSound: function () {
+		WWFarmer.bgSoundPlay = !WWFarmer.bgSoundPlay;
+
+		if (WWFarmer.bgSoundPlay) {
+			WWFarmer.bgSound.play();
+			this.toggleBgSoundButton.frame = 0;
+		} else {
+			WWFarmer.bgSound.stop();
+			this.toggleBgSoundButton.frame = 1;
+		}
 	}
 };

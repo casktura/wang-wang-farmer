@@ -16,13 +16,21 @@ WWFarmer.Preload.prototype = {
 		this.load.pack("prologue", "assets/AssetPack.json");
 		this.load.pack("game", "assets/AssetPack.json");
 		this.load.pack("game-over", "assets/AssetPack.json");
+		this.load.pack("help", "assets/AssetPack.json");
 		this.load.pack("credit", "assets/AssetPack.json");
 	},
-	create: function () {
+	update: function () {
+		if (this.cache.isSoundDecoded("bg-sound")) {
+			this.preToMenu();
+		}
+	},
+	preToMenu: function () {
 		this.add.tween(this.logoBackground).to({alpha: 1}, 1000, "Linear", true);
 		this.add.tween(this.loadingText).to({alpha: 0}, 1000, "Linear", true).onComplete.add(this.toMenu, this);
 	},
 	toMenu: function () {
+		WWFarmer.bgSound = this.add.sound("bg-sound", 0.25, true).play();
+
 		this.state.start("Menu");
 	}
 };

@@ -13,4 +13,7 @@ window.onload = function () {
 	game.state.start("Boot");
 };
 
-var WWFarmer = {};
+var WWFarmer = {
+	bgSound: null,
+	bgSoundPlay: true
+};

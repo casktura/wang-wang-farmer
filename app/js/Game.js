@@ -97,9 +97,13 @@ var Garden = function (x, y, game) {
 Garden.prototype = {
 	run: function () {
 		if (selectedMenu == "water-can" && this.watered == false) {
+			this.game.wateringSound.play();
+
 			this.watered = true;
 			this.soil.frame = 1;
 		} else if (selectedMenu == "harvest" && this.state == 2) {
+			this.game.harvestSound.play();
+
 			this.game.money += plants[this.plantType].sellPrice;
 			this.plant.frame = 0;
 			this.state = 0;
@@ -113,6 +117,8 @@ Garden.prototype = {
 			this.game.add.tween(this.game.coin).to({alpha: 0}, 1000, Phaser.Easing.Exponential.In, true);
 			this.game.add.tween(this.game.coin.scale).to({x: 0.3, y: 0.3}, 1000, Phaser.Easing.Exponential.InOut, true).onComplete.add(this.game.updateStatus,this.game);
 		} else if (selectedMenu == "inventory" && selectedSeed != "" && this.plantType == "") {
+			this.game.plantingSound.play();
+
 			inventory[selectedSeed]--;
 			this.plantType = selectedSeed;
 			this.plant.frame = plants[this.plantType].frame;
@@ -173,7 +179,14 @@ WWFarmer.Game.prototype = {
 		this.coin.anchor.set(0.5);
 		this.coin.alpha = 0;
 
-		console.log(this.gardens);
+		this.plantingSound = this.add.sound("planting-sound", 0.75);
+		this.plantingSound.allowMultiple = true;
+
+		this.wateringSound = this.add.sound("watering-sound");
+		this.wateringSound.allowMultiple = true;
+
+		this.harvestSound = this.add.sound("harvest-sound", 0.4);
+		this.harvestSound.allowMultiple = true;
 	},
 	toGameOver: function () {
 		this.state.start("GameOver");
@@ -301,27 +314,27 @@ WWFarmer.Game.prototype = {
 		this.inventoryPopUp.scale.set(0);
 		this.inventoryPopUp.inputEnabled = true;
 
-		var selectButton = this.inventoryPopUp.addChild(this.make.button(501, 186, "inventory-select-button", this.select1, this, 1, 0, 1, 0));
+		var selectButton = this.inventoryPopUp.addChild(this.make.button(501, 186, "inventory-select-button", this.selectTunip, this, 1, 0, 1, 0));
 		selectButton.anchor.set(0.5);
 		this.inventoryTunip = this.inventoryPopUp.addChild(this.make.text(320, 186, "", {fill: "black", font: "80px"}));
 		this.inventoryTunip.anchor.set(0.5);
 
-		selectButton = this.inventoryPopUp.addChild(this.make.button(501, 301, "inventory-select-button", this.select2, this, 1, 0, 1, 0));
+		selectButton = this.inventoryPopUp.addChild(this.make.button(501, 301, "inventory-select-button", this.selectPotato, this, 1, 0, 1, 0));
 		selectButton.anchor.set(0.5);
 		this.inventoryPotato = this.inventoryPopUp.addChild(this.make.text(320, 309, "", {fill: "black", font: "80px"}));
 		this.inventoryPotato.anchor.set(0.5);
 
-		selectButton = this.inventoryPopUp.addChild(this.make.button(501, 422, "inventory-select-button", this.select3, this, 1, 0, 1, 0));
+		selectButton = this.inventoryPopUp.addChild(this.make.button(501, 422, "inventory-select-button", this.selectCorn, this, 1, 0, 1, 0));
 		selectButton.anchor.set(0.5);
 		this.inventoryCorn = this.inventoryPopUp.addChild(this.make.text(320, 415, "", {fill: "black", font: "80px"}));
 		this.inventoryCorn.anchor.set(0.5);
 
-		selectButton = this.inventoryPopUp.addChild(this.make.button(501, 534, "inventory-select-button", this.select4, this, 1, 0, 1, 0));
+		selectButton = this.inventoryPopUp.addChild(this.make.button(501, 534, "inventory-select-button", this.selectTomato, this, 1, 0, 1, 0));
 		selectButton.anchor.set(0.5);
 		this.inventoryTomato = this.inventoryPopUp.addChild(this.make.text(320, 546, "", {fill: "black", font: "80px"}));
 		this.inventoryTomato.anchor.set(0.5);
 
-		selectButton = this.inventoryPopUp.addChild(this.make.button(501, 659, "inventory-select-button", this.select5, this, 1, 0, 1, 0));
+		selectButton = this.inventoryPopUp.addChild(this.make.button(501, 659, "inventory-select-button", this.selectPineapple, this, 1, 0, 1, 0));
 		selectButton.anchor.set(0.5);
 		this.inventoryPineapple = this.inventoryPopUp.addChild(this.make.text(320, 653, "", {fill: "black", font: "80px"}));
 		this.inventoryPineapple.anchor.set(0.5);
@@ -339,35 +352,35 @@ WWFarmer.Game.prototype = {
 		this.add.tween(this.inventoryPopUp).to({x: 50, y: 50}, 250, "Linear", true);
 		this.add.tween(this.inventoryPopUp.scale).to({x: 1, y: 1}, 250, "Linear", true);
 	},
-	select1: function () {
+	selectTunip: function () {
 		if (inventory.tunip == 0)
 			return;
 
 		selectedSeed = "tunip";
 		this.closeInventory();
 	},
-	select2: function () {
+	selectPotato: function () {
 		if (inventory.potato == 0)
 			return;
 
 		selectedSeed = "potato";
 		this.closeInventory();
 	},
-	select3: function () {
+	selectCorn: function () {
 		if (inventory.corn == 0)
 			return;
 
 		selectedSeed = "corn";
 		this.closeInventory();
 	},
-	select4: function () {
+	selectTomato: function () {
 		if (inventory.tomato == 0)
 			return;
 
 		selectedSeed = "tomato";
 		this.closeInventory();
 	},
-	select5: function () {
+	selectPineapple: function () {
 		if (inventory.pineapple == 0)
 			return;
 
@@ -388,15 +401,15 @@ WWFarmer.Game.prototype = {
 		this.shopPopUp.scale.set(0);
 		this.shopPopUp.inputEnabled = true;
 
-		var buyButton = this.shopPopUp.addChild(this.make.button(501, 186, "shop-buy-button", this.buy1, this, 1, 0, 1, 0));
+		var buyButton = this.shopPopUp.addChild(this.make.button(501, 186, "shop-buy-button", this.buyTunip, this, 1, 0, 1, 0));
 		buyButton.anchor.set(0.5);
-		buyButton = this.shopPopUp.addChild(this.make.button(501, 301, "shop-buy-button", this.buy2, this, 1, 0, 1, 0));
+		buyButton = this.shopPopUp.addChild(this.make.button(501, 301, "shop-buy-button", this.buyPotato, this, 1, 0, 1, 0));
 		buyButton.anchor.set(0.5);
-		buyButton = this.shopPopUp.addChild(this.make.button(501, 422, "shop-buy-button", this.buy3, this, 1, 0, 1, 0));
+		buyButton = this.shopPopUp.addChild(this.make.button(501, 422, "shop-buy-button", this.buyCorn, this, 1, 0, 1, 0));
 		buyButton.anchor.set(0.5);
-		buyButton = this.shopPopUp.addChild(this.make.button(501, 534, "shop-buy-button", this.buy4, this, 1, 0, 1, 0));
+		buyButton = this.shopPopUp.addChild(this.make.button(501, 534, "shop-buy-button", this.buyPotato, this, 1, 0, 1, 0));
 		buyButton.anchor.set(0.5);
-		buyButton = this.shopPopUp.addChild(this.make.button(501, 659, "shop-buy-button", this.buy5, this, 1, 0, 1, 0));
+		buyButton = this.shopPopUp.addChild(this.make.button(501, 659, "shop-buy-button", this.buyPineapple, this, 1, 0, 1, 0));
 		buyButton.anchor.set(0.5);
 
 		var closeButton = this.shopPopUp.addChild(this.make.button(600, 20, "close-button", this.closeShop, this));
@@ -406,35 +419,35 @@ WWFarmer.Game.prototype = {
 		this.add.tween(this.shopPopUp).to({x: 50, y: 50}, 250, "Linear", true);
 		this.add.tween(this.shopPopUp.scale).to({x: 1, y: 1}, 250, "Linear", true);
 	},
-	buy1: function () {
+	buyTunip: function () {
 		if ( this.money >= plants.tunip.seedCost) {
 			inventory.tunip++;
 			this.money -= plants.tunip.seedCost;
 			this.updateStatus();
 		}
 	},
-	buy2: function () {
+	buyPotato: function () {
 		if ( this.money >= plants.potato.seedCost) {
 			inventory.potato++;
 			this.money -= plants.potato.seedCost;
 			this.updateStatus();
 		}
 	},
-	buy3: function () {
+	buyCorn: function () {
 		if ( this.money >= plants.corn.seedCost) {
 			inventory.corn++;
 			this.money -= plants.corn.seedCost;
 			this.updateStatus();
 		}
 	},
-	buy4: function () {
+	buyPotato: function () {
 		if ( this.money >= plants.tomato.seedCost) {
 			inventory.tomato++;
 			this.money -= plants.tomato.seedCost;
 			this.updateStatus();
 		}
 	},
-	buy5: function () {
+	buyPineapple: function () {
 		if ( this.money >= plants.pineapple.seedCost) {
 			inventory.pineapple++;
 			this.money -= plants.pineapple.seedCost;

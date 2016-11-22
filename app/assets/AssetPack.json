@@ -47,7 +47,23 @@
 			"frameMax": 2,
 			"margin": 0,
 			"spacing": 0
-		}
+		},
+		{
+			"type": "spritesheet",
+			"key": "toggle-music-button",
+			"url": "assets/sprites/toggle-music-button.png",
+			"frameWidth": 91,
+			"frameHeight": 71,
+			"frameMax": 2,
+			"margin": 0,
+			"spacing": 0
+		},
+        {
+            "type": "audio",
+            "key": "bg-sound",
+            "urls": ["assets/audios/bg-sound.mp3"],
+            "autoDecode": true
+        }
 	],
 	"prologue": [
 		{
@@ -187,13 +203,39 @@
             "key": "loan-shark-button",
             "url": "assets/images/loan-shark-button.png",
             "overwrite": false
-		}
+		},
+        {
+            "type": "audio",
+            "key": "planting-sound",
+            "urls": ["assets/audios/planting-sound.mp3"],
+            "autoDecode": true
+        },
+        {
+            "type": "audio",
+            "key": "watering-sound",
+            "urls": ["assets/audios/watering-sound.mp3"],
+            "autoDecode": true
+        },
+        {
+            "type": "audio",
+            "key": "harvest-sound",
+            "urls": ["assets/audios/harvest-sound.mp3"],
+            "autoDecode": true
+        }
 	],
 	"game-over": [
 		{
             "type": "image",
             "key": "game-over",
             "url": "assets/images/game-over.png",
+            "overwrite": false
+		}
+	],
+	"help": [
+		{
+            "type": "image",
+            "key": "help",
+            "url": "assets/images/help.png",
             "overwrite": false
 		}
 	],
