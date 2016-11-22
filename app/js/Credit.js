@@ -2,8 +2,8 @@ WWFarmer.Credit = function (game) {};
 
 WWFarmer.Credit.prototype = {
 	create: function () {
-		this.add.text(0, 0, "This is Credit Page", {fill: "white"});
-		this.add.text(0, 50, "Tab to go to menu", {fill: "white"});
+		this.add.sprite(0, 0, "credit");
+
 		this.input.onTap.add(this.toMenu, this);
 	},
 	toMenu: function () {

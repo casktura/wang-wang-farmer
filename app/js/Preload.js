@@ -15,6 +15,8 @@ WWFarmer.Preload.prototype = {
 		this.load.pack("menu", "assets/AssetPack.json");
 		this.load.pack("prologue", "assets/AssetPack.json");
 		this.load.pack("game", "assets/AssetPack.json");
+		this.load.pack("game-over", "assets/AssetPack.json");
+		this.load.pack("credit", "assets/AssetPack.json");
 	},
 	create: function () {
 		this.add.tween(this.logoBackground).to({alpha: 1}, 1000, "Linear", true);

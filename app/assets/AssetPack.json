@@ -23,7 +23,7 @@
 			"key": "start-button",
 			"url": "assets/sprites/start-button.png",
 			"frameWidth": 128,
-			"frameHeight": 128,
+			"frameHeight": 64,
 			"frameMax": 2,
 			"margin": 0,
 			"spacing": 0
@@ -33,7 +33,7 @@
 			"key": "help-button",
 			"url": "assets/sprites/help-button.png",
 			"frameWidth": 128,
-			"frameHeight": 128,
+			"frameHeight": 64,
 			"frameMax": 2,
 			"margin": 0,
 			"spacing": 0
@@ -43,7 +43,7 @@
 			"key": "credit-button",
 			"url": "assets/sprites/credit-button.png",
 			"frameWidth": 128,
-			"frameHeight": 128,
+			"frameHeight": 65,
 			"frameMax": 2,
 			"margin": 0,
 			"spacing": 0
@@ -60,8 +60,148 @@
 	"game": [
 		{
             "type": "image",
-            "key": "play-stage-demo",
-            "url": "assets/images/play-stage-demo.png",
+            "key": "garden-background",
+            "url": "assets/images/garden-background.png",
+            "overwrite": false
+		},
+		{
+			"type": "spritesheet",
+			"key": "soil",
+			"url": "assets/sprites/soil.png",
+			"frameWidth": 174,
+			"frameHeight": 181,
+			"frameMax": 2,
+			"margin": 0,
+			"spacing": 0
+		},
+		{
+			"type": "spritesheet",
+			"key": "plant",
+			"url": "assets/sprites/plant.png",
+			"frameWidth": 110,
+			"frameHeight": 109,
+			"frameMax": 16,
+			"margin": 0,
+			"spacing": 0
+		},
+		{
+			"type": "spritesheet",
+			"key": "soil-select-button",
+			"url": "assets/sprites/soil-select-button.png",
+			"frameWidth": 189,
+			"frameHeight": 196,
+			"frameMax": 2,
+			"margin": 0,
+			"spacing": 0
+		},
+		{
+            "type": "image",
+            "key": "inventory",
+            "url": "assets/images/inventory.png",
+            "overwrite": false
+		},
+		{
+			"type": "spritesheet",
+			"key": "water-can",
+			"url": "assets/sprites/water-can.png",
+			"frameWidth": 128,
+			"frameHeight": 128,
+			"frameMax": 2,
+			"margin": 0,
+			"spacing": 0
+		},
+		{
+			"type": "spritesheet",
+			"key": "harvest",
+			"url": "assets/sprites/harvest.png",
+			"frameWidth": 128,
+			"frameHeight": 128,
+			"frameMax": 2,
+			"margin": 0,
+			"spacing": 0
+		},
+		{
+			"type": "spritesheet",
+			"key": "inventory-select-button",
+			"url": "assets/sprites/inventory-select-button.png",
+			"frameWidth": 147,
+			"frameHeight": 89,
+			"frameMax": 2,
+			"margin": 0,
+			"spacing": 0
+		},
+		{
+			"type": "spritesheet",
+			"key": "shop-buy-button",
+			"url": "assets/sprites/shop-buy-button.png",
+			"frameWidth": 147,
+			"frameHeight": 89,
+			"frameMax": 2,
+			"margin": 0,
+			"spacing": 0
+		},
+		{
+            "type": "image",
+            "key": "shop",
+            "url": "assets/images/shop.png",
+            "overwrite": false
+		},
+		{
+            "type": "image",
+            "key": "end-turn",
+            "url": "assets/images/end-turn.png",
+            "overwrite": false
+		},
+		{
+            "type": "image",
+            "key": "coin",
+            "url": "assets/images/coin.png",
+            "overwrite": false
+		},
+		{
+            "type": "image",
+            "key": "inventory-pop-up",
+            "url": "assets/images/inventory-pop-up.png",
+            "overwrite": false
+		},
+		{
+            "type": "image",
+            "key": "close-button",
+            "url": "assets/images/close-button.png",
+            "overwrite": false
+		},
+		{
+            "type": "image",
+            "key": "shop-pop-up",
+            "url": "assets/images/shop-pop-up.png",
+            "overwrite": false
+		},
+		{
+            "type": "image",
+            "key": "loan-shark-pop-up",
+            "url": "assets/images/loan-shark-pop-up.png",
+            "overwrite": false
+		},
+		{
+            "type": "image",
+            "key": "loan-shark-button",
+            "url": "assets/images/loan-shark-button.png",
+            "overwrite": false
+		}
+	],
+	"game-over": [
+		{
+            "type": "image",
+            "key": "game-over",
+            "url": "assets/images/game-over.png",
+            "overwrite": false
+		}
+	],
+	"credit": [
+		{
+            "type": "image",
+            "key": "credit",
+            "url": "assets/images/credit.png",
             "overwrite": false
 		}
 	]
